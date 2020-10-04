@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Red Quasar Survey: Data</title>
+	<style>
+	html {font-family: Arial, Helvetica, sans-serif; color:#444;}
+	td, th {padding:8px; vertical-align:top; border: 1px solid #DDD;
+		border-collapse:collapse;}
+	td {font-size:9pt; text-align:left;}
+	th {font-size:11pt;}
+	h1 {text-align:center;}
+	header {text-align:center; padding:10px; border: 1px solid #CCC;
+		background:#EEE;}
+	nav {color:#777; word-spacing:50px; font-size:10pt; font-variant:small-caps;}
+	article {margin-left:17%; margin-right:17%; margin-top:40px;text-align:justify;
+		line-height:150%;}
+	a:link {color:#000000;}
+	a:visited {color:#009;}
+	a:hover {color:#0044FF;}
+	table {border-collapse:collapse;}
+	table.center {margin-left:auto; margin-right:auto;}
+	.date {font-size:8pt;color:#BBB;}
+	.credits {font-size:9pt;color:#555;}
+	.logo {font-size:16pt; color:#222; text-align:left;}
+	</style>
+
+	<script src='redQSOs_data.js'>
+		/* Contains following variables:
+		redQSOs		 :: aux data for all targets
+		observedQSOs :: list of observed spectra so far*/
+	</script>
+	<script>
+		var showTwoColumns = false;
+
+		function resetFilters() {
+			document.getElementById("filtering").reset();
+			showAll();
+		}
+
+		function getFilters(){
+			var form = document.getElementById("filtering");
+			filterList=[];
+			for (i=0; i<form.length; i++) {
+				if (form.elements[i].checked==true) {
+					filterList.push(form.elements[i].value);
+				}
+		    }
+			return filterList;
+		}
+
+		function showAll() {
+			var filters = getFilters();
+			checkSize();
+
+			table = "<table class='center'>";
+		//	table+= "<tr><th>Spectrum</th><th>SED</th><th>SDSS DR10</th></tr>";
+
+			sortMethod = document.getElementById("sort_method").value;
+			target_list = sortList(sortMethod);
+
+			for (i=0; i<target_list.length; i++) {
+				name = target_list[i];
+				redshift = redQSOs[name]["spec_z"];
+				Av_qso = redQSOs[name]["Av_qso"];
+				Av_abs = redQSOs[name]["Av_abs"];
+				z_abs = redQSOs[name]["z_abs"];
+				grism6 = redQSOs[name]["grism6"];
+				if (z_abs > 0) {
+					Av_info = "A(V)<sub>QSO</sub> = "+Av_qso+", &nbsp; z<sub>abs</sub> = "+z_abs+", &nbsp; A(V)<sub>abs</sub> = "+Av_abs;
+				}
+				else {
+					Av_info = "A<sub>V</sub> = "+Av_qso;
+				}
+				obj_title = "<big><big><b>"+name+"</b></big>&nbsp; &nbsp; <i>z</i> = "+redshift+",&nbsp;" + Av_info+"<br>";
+				if (grism6==1) {
+					obj_title += "&nbsp; &nbsp; &nbsp; Grism #6 <br>";
+				}
+				obj_title += redQSOs[name]['ra_hex']+", "+redQSOs[name]['dec_hex']+" </big>";
+				obj_title += "&nbsp; (ra, dec) = ( "+redQSOs[name]['ra']+", "+redQSOs[name]['dec']+" )";
+				if (name in redQSOs && filters.length>0) {
+					sdss_id = redQSOs[name]["sid"];
+					filtersPassed=1;
+					if (filters[0] == "abs" && z_abs>0) {
+						filtersPassed=1;
+					}
+					else {
+						for (j=0;j<filters.length;j++){
+							filtersPassed *= redQSOs[name][filters[j]];
+						}
+					}
+
+					if (filtersPassed==1) {
+						table += "<tr>";
+						table += "<td>"+obj_title+" <a href='./images/"+name+".png'> <img src='./images/"+name+".png' width=500> </a></td>";
+						table += "<td> <big><big>&nbsp;</big></big><br><br><br><br><a href='./SEDs/"+name+".png'> <img src='./SEDs/"+name+".png' width=500 align='bottom'> </a></td>";
+						table += "<td><a target='_blank' href='http://skyserver.sdss3.org/public/en/tools/explore/summary.aspx?id="+redQSOs[name]['id']+"'>SDSS DR10</a>";
+						if (sdss_id != -99) {
+							table += "<br><small>Spectrum in SDSS</small>";
+						}
+						table += "</td>";
+						table += "</tr>";
+					}
+				}
+				else if (name in redQSOs && filters.length==0) {
+					sdss_id = redQSOs[name]["sid"];
+					table += "<tr>";
+					table += "<td>"+obj_title+" <a href='./images/"+name+".png'> <img src='./images/"+name+".png' width=500> </a></td>";
+					table += "<td> <big><big>&nbsp;</big></big><br><br><br><br><a href='./SEDs/"+name+".png'> <img src='./SEDs/"+name+".png' width=500> </a></td>";
+					table += "<td><a target='_blank' href='http://skyserver.sdss3.org/public/en/tools/explore/summary.aspx?id="+redQSOs[name]['id']+"'>SDSS DR10</a>";
+					if (sdss_id != -99) {
+						table += "<br><small>Spectrum in SDSS</small>";
+					}
+					table += "</td>";
+					table += "</tr>";
+				}
+			}
+			table += "</table>";
+
+			// Write table to webpage DIV="content"
+			document.getElementById("content").innerHTML = table;
+		}
+
+		// Auxilliary Functions:
+		function sortMultiDimensional(a,b) {
+			// this sorts the array using the second element
+			return ((a[1] < b[1]) ? -1 : ((a[1] > b[1]) ? 1 : 0));
+		}
+
+		function sortList(key) {
+			// this sorts the dataObj by the value in key
+			// fx key='redshift' for redshift
+			// or key='ra' for RA
+			var sorted_targets=[];
+			tmp=[];
+			for (j=0; j<observedQSOs.length; j++) {
+				name = observedQSOs[j];
+				if (name in redQSOs) {
+					tmp.push([name, redQSOs[name][key]]);
+				}
+			}
+			tmp.sort(sortMultiDimensional);
+			for (ij=0; ij<tmp.length; ij++) {
+				sorted_targets.push(tmp[ij][0]);
+			}
+			return sorted_targets;
+		}
+
+		function checkSize() {
+			var w = window.outerWidth;
+			if (w>1000) {
+				showTwoColumns = true;
+			}
+			else {
+				showTwoColumnd = false;
+			}
+		}
+
+	</script>
+</head>
+
+	<body onload="checkSize();showAll();document.getElementById('last_update').innerHTML=last_update;" onresize="checkSize()">
+	<header>
+		<h1>The <font color='993333'>High A<sub>V</sub> Quasar </font> Survey</h1>
+
+	<nav>
+		<a href="../index.html"> Home</a>
+		<a href="index.html">HAQ-Main</a>
+		<a href="data.html">Data</a>
+		<a href="targets.html">Targets</a>
+		<a href="./q2225.html">HAQ2225+0527</a>
+	</nav>
+	</header>
+
+	<article>
+		<p>
+		Below are shown all the observed spectra of candidate quasars from SDSS and UKIDSS photometry with the
+		revised color criteria given on the <a href="index.html">main</a> page.</p> One of the HAQ quasars showed
+		particularly interesting features in the ALFOSC spectrum (strong intervening HI absorption and high reddening)
+		and was studied in more detail to characterize the absorption system in detail. More detail is available on
+		the <a href="q2225.html">dedicated page</a> of this absorber, <a href="q2225.html">HAQ 2225+0527</a>.
+
+		<p style="font-size:11pt;">
+		The spectrum from the NOT is shown in black and the photometry from SDSS and UKIDSS is shown as red squares.
+		If the target was observed with the Grism #6 of ALFOSC then the name is marked under the target name.
+		The overplotted lines indicate an unreddened (<font color="#00F">blue</font>) and reddened (<font color="#F00">red</font>)
+		combined composite QSO template from <a target="_blank" href="http://labs.adsabs.harvard.edu/adsabs/abs/2001AJ....122..549V/">Vanden Berk et al. (2001)</a> and <a target="_blank" href="http://labs.adsabs.harvard.edu/ui/abs/2006ApJ...640..579G">Glikman et al. (2006).</a>
+		In each figure the inferred redshift is indicated along the with amount of extinction quantified
+		by A(V) assuming SMC-type dust. In cases where dust is detected in an intervening absorption
+		system along the line of sight, we give the reddening inferred from the absorber A(V)<sub>abs</sub>
+		(assuming LMC-type dust) at the redshift z<sub>abs</sub> along with the reddening inferred
+		in the quasar host itself A(V)<sub>QSO</sub>. If no reddening is applied the template is
+		shown only in blue. </br>
+		The right panel shows the spectral energy distribution compiled from
+		SDSS, UKIDSS, and WISE. Upper limits are showns as red triangles. We plot a continuum template from
+		<a target="_blank" href="http://labs.adsabs.harvard.edu/adsabs/abs/2006ApJS..166..470R">Richards et al. (2006)</a>
+		with the same colour coding as for the spectral template.
+		Furthermore, next to the spectrum we give a link to the SDSS skyserver
+		providing an overview of data available for the given target.
+		</p>
+
+		<p>
+			<input type=hidden id="sort_method" value="ra">
+			<table class="center">
+				<tr><th>Sort spectra by:</th> <th>Select what to show:</th></tr>
+				<tr><td>
+			<input type="button" value="Redshift" onclick="document.getElementById('sort_method').value='spec_z';showAll()">
+			<input type="button" value="Coordinates" onclick="document.getElementById('sort_method').value='ra';showAll()">
+			</td><td>
+			<form id="filtering">
+			<input type="radio" name="category" value="pec" onclick="showAll()"> Peculiar Spectra&nbsp;
+			<!--
+			<input type="radio" name="category" value="other" onclick="showAll()"> Unknown/Other&nbsp;
+			-->
+			<br>
+			<input type="radio" name="category" value="abs" onclick="showAll()"> Intervening LMC dust&nbsp;
+			<input type="radio" name="category" value="grism6" onclick="showAll()"> Grism #6 only
+			&nbsp;&nbsp;&nbsp;
+			<input type="button" onclick="resetFilters()" value="Show All">
+			</form>
+			</td>
+			</table>
+		</p>
+
+		<p style="text-align:center;font-size:10pt;"> Click on the spectra to view full size.</p>
+
+		<div id="content">  </div>
+
+	<br>
+	<p class="credits">Created by <b>Jens-Kristian Krogager</b> <br> Dark Cosmology Centre, Copenhagen University
+	&amp;
+	ESO, Santiago, Chile</p>
+	<p id="last_update" class="date">September 25, 2014</p>
+	</article>
+	</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Red Quasar Survey: Data</title>
+	<style>
+	html {font-family: Arial, Helvetica, sans-serif; color:#444;}
+	td, th {padding:8px; vertical-align:top; border: 1px solid #DDD;
+		border-collapse:collapse;}
+	td {font-size:9pt;}
+	th {font-size:11pt;}
+	h1 {text-align:center;}
+	header {text-align:center; padding:10px; border: 1px solid #CCC;
+		background:#EEE;}
+	nav {color:#777; word-spacing:50px; font-size:10pt; font-variant:small-caps;}
+	article {margin-left:17%; margin-right:17%; margin-top:40px;text-align:justify;
+		line-height:150%;}
+	a:link {color:#000000;}
+	a:visited {color:#009;}
+	a:hover {color:#0044FF;}
+	table {border-collapse:collapse;}
+	table.center {margin-left:auto; margin-right:auto;}
+	.date {font-size:8pt;color:#BBB;}
+	.credits {font-size:9pt;color:#555;}
+	</style>
+
+	<script src='redQSOs_data.js'>
+		/* Contains following variables:
+		redQSOs		 :: aux data for all targets
+		observedQSOs :: list of observed spectra so far*/
+	</script>
+	<script>
+		var showTwoColumns = false;
+
+		function resetFilters() {
+			document.getElementById("filtering").reset();
+			showAll();
+		}
+
+		function getFilters(){
+			var form = document.getElementById("filtering");
+			filterList=[];
+			for (i=0; i<form.length; i++) {
+				if (form.elements[i].checked==true) {
+					filterList.push(form.elements[i].value);
+				}
+		    }
+			return filterList;
+		}
+
+		function showAll() {
+			var filters = getFilters();
+			checkSize();
+
+			table = "<table class='center'>";
+			table+= "<tr><th>Spectrum</th><th>SDSS DR9</th></tr>";
+
+			sortMethod = document.getElementById("sort_method").value;
+			target_list = sortList(sortMethod);
+
+			for (i=0; i<target_list.length; i++) {
+				name = target_list[i];
+				if (name in redQSOs && filters.length>0) {
+					sdss_id = redQSOs[name]["sid"];
+					filtersPassed=1;
+					for (j=0;j<filters.length;j++){
+						filtersPassed *= redQSOs[name][filters[j]];
+					}
+					
+					if (filtersPassed==1) {
+						table += "<tr>";
+						table += "<td><a href='./images/"+name+".png'> <img src='./images/"+name+".png' width=400> </a></td>";
+						table += "<td><a target='_blank' href='http://skyserver.sdss3.org/dr9/en/tools/explore/obj.asp?ra="+redQSOs[name]['ra'];
+						table += "&dec="+redQSOs[name]['dec']+"'>Info</a>";
+						if (sdss_id != -1) {
+							table += "<br><small>Spectrum in SDSS</small>";
+						}
+						table += "</td>";
+						table += "</tr>";
+					}
+				}
+				else if (name in redQSOs && filters.length==0) {
+					sdss_id = redQSOs[name]["sid"];
+					table += "<tr>";
+					table += "<td><a href='./images/"+name+".png'> <img src='./images/"+name+".png' width=400> </a></td>";
+					table += "<td><a target='_blank' href='http://skyserver.sdss3.org/dr9/en/tools/explore/obj.asp?ra="+redQSOs[name]['ra'];
+					table += "&dec="+redQSOs[name]['dec']+"'>Info</a>";
+					if (sdss_id != -1) {
+						table += "<br><small>Spectrum in SDSS</small>";
+					}
+					table += "</td>";
+					table += "</tr>";
+				}
+			}
+			table += "</table>";
+
+			// Write table to webpage DIV="content"
+			document.getElementById("content").innerHTML = table;
+		}
+
+		// Auxilliary Functions:
+		function sortMultiDimensional(a,b) {
+			// this sorts the array using the second element    
+			return ((a[1] < b[1]) ? -1 : ((a[1] > b[1]) ? 1 : 0));
+		}
+		
+		function sortList(key) {
+			// this sorts the dataObj by the value in key
+			// fx key='redshift' for redshift
+			// or key='ra' for RA
+			var sorted_targets=[];
+			tmp=[];
+			for (j=0; j<observedQSOs.length; j++) {
+				name = observedQSOs[j];
+				if (name in redQSOs) {
+					tmp.push([name, redQSOs[name][key]]);
+				}
+			}
+			tmp.sort(sortMultiDimensional);
+			for (ij=0; ij<tmp.length; ij++) {
+				sorted_targets.push(tmp[ij][0]);
+			}
+			return sorted_targets;
+		}
+
+		function checkSize() {
+			var w = window.outerWidth;
+			if (w>1000) {
+				showTwoColumns = true;
+			}
+			else {
+				showTwoColumnd = false;
+			}
+		}
+
+	</script>
+</head>
+
+	<body onload="checkSize();showAll();document.getElementById('last_update').innerHTML=last_update;" onresize="checkSize()">
+	<header>
+		<h1>The NOT/NTT <font color='993333'> Red Quasar </font> Survey</h1>
+
+	<nav>
+		<a href="../redQSOs.html">Main</a>
+		<a href="data.html">Data</a>
+		<a href="targets.html">Targets</a>
+	</nav>
+	</header>
+
+	<article>
+		<p> 
+		Below are shown all the observed spectra of candidate quasars from SDSS and UKIDSS photometry with the
+		revised color criteria given on the <a href="../redQSOs.html">main</a> page.</p>
+
+		<p style="font-size:11pt;">
+		The spectrum from the NOT is shown in black and the photometry from SDSS and UKIDSS is shown in red dots.
+		The overplotted lines indicate an unreddened (<font color="#00F">blue</font>) and reddened (<font color="#F00">red</font>)
+		composite QSO template from <a target="_blank" href="http://labs.adsabs.harvard.edu/ui/abs/2006ApJ...640..579G">Glikman et al. (2006).</a>
+		In each figure the inferred redshift is indicated along the with amount of extinction either quantified
+		by A<sub>V</sub> or A<sub>B</sub> assuming SMC-type dust. If no reddening is applied the template is shown only in red.
+		Furthermore, next to the spectrum we give a link to the SDSS skyserver providing an overview of data available
+		for the given target.</p>
+
+		<p>
+			<input type=hidden id="sort_method" value="ra">
+			<table class="center">
+				<tr><th>Sort spectra by:</th> <th>Select what to show:</th></tr>
+				<tr><td>
+			<input type="button" value="Redshift" onclick="document.getElementById('sort_method').value='spec_z';showAll()">
+			<input type="button" value="Coordinates" onclick="document.getElementById('sort_method').value='ra';showAll()">
+			</td><td>
+			<form id="filtering">
+			<input type="radio" name="reddening" value="nored" onclick="showAll()"> No Reddening
+			<input type="radio" name="reddening" value="SMC" onclick="showAll()"> SMC
+			<input type="radio" name="reddening" value="other" onclick="showAll()"> Other
+			<br>
+			<input type="checkbox" value="noabs" onclick="showAll()"> No Absorption
+			<input type="checkbox" value="BAL" onclick="showAll()"> BAL
+			<input type="checkbox" value="narrow" onclick="showAll()"> Narrow
+			<input type="checkbox" value="strong" onclick="showAll()"> Strong
+			<input type="checkbox" value="weak" onclick="showAll()"> Weak
+			<br>
+			<input type="checkbox" value="DLA" onclick="showAll()"> Intervening
+			<input type="button" onclick="resetFilters()" value="Reset">
+			</form>
+			</td>
+			</table>
+		</p>
+
+		<p style="text-align:center;font-size:10pt;"> Click on the spectra to view full size.</p>
+
+		<div id="content">  </div>
+
+	<br>
+	<p class="credits">Created by <b>Jens-Kristian Krogager</b> <br> Dark Cosmology Centre, Copenhagen University
+	&amp;
+	ESO, Santiago, Chile</p>
+	<p id="last_update" class="date">August 30 2013</p>
+	</article>
+	</body>
+</html>
