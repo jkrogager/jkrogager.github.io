@@ -9,7 +9,7 @@
 		<title>PyNOT : bias</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
 	</head>
 	<body class="is-preload">
 
@@ -22,7 +22,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="../index.html" class="logo"><strong>PyNOT</strong> / data processing pipeline</a>
+									<a href="../../index.html" class="logo"><strong>PyNOT</strong> / data processing pipeline</a>
 									<ul class="icons">
 										<li><a href="https://jkrogager.github.io/"><span class="label">About Me</span></a></li>
 										<li><a href="https://github.com/jkrogager/pynot" class="icon brands fa-github"><span class="label">Github</span></a></li>
@@ -30,14 +30,57 @@
 								</header>
 
 							<!-- Content -->
-								<section>
+                                <section>
+
 									<header class="main">
-										<h1>PyNOT : bias</h1>
+									  <h1>PyNOT : bias</h1>
 									</header>
 
-                  <p class="warning">
-                  Nothing here yet! Stay tuned... :)
-                  </p>
+									<h2 class="code">
+										pynot bias  bias.list
+									</h2>
+									<br><br>
+
+									<p>
+										This task takes a list of a bias images and combines them into a master combined bias frame. The command line task accepts wildcards, an explicit list of files, or a file containing a list of files. The combination is performed using a sigma-clipped mean or median. The threshold of the clipping and the method can be controlled by the <code>kappa</code> and <code>method</code> arguments.
+									</p>
+
+									The easiest way to generate the input for <code>pynot bias</code> is to source it from the file classification table:
+									<br><br>
+									<p class="code">
+										%] cat dataset.pfc | grep BIAS > bias.list<br>
+										%] pynot bias bias.list --output master_bias.fits --method median
+									</p>
+									<br><br>
+
+									Alternatively the input can be passed as an explicit list:
+									<br><br>
+									<p class="code">
+										%] pynot bias data/bias1.fits data/bias2.fits data/bias3.fits --output master_bias.fits
+									</p>
+									or using wildcards:
+									<p class="code">
+										%] pynot bias data/bias*.fits --output master_bias.fits
+									</p>
+									<br><br>
+
+									<h2 id="summary"> Overview of parameters</h2>
+
+									<dl>
+									<dt>input</dt>
+											<dd>List of bias images to combine (command line accepts a list of files and wildcards)</dd>
+									</dl>
+
+                  <u>Optional Arguments:</u>
+									<dl>
+									<dt>output:  MASTER_BIAS.fits</dt>
+											<dd>Output filename</dd>
+									<dt>method:    median</dt>
+											<dd>Method for image combination (options: median/mean)</dd>
+								  <dt>kappa:     15</dt>
+									    <dd>Threshold for sigma clipping in bias combiniation</dd>
+									</dl>
+
 								</section>
 
 						</div>
@@ -47,89 +90,82 @@
 					<div id="sidebar">
 						<div class="inner">
 
-							<!-- Search -->
+							<!-- Search
 								<section id="search" class="alt">
 									<form method="post" action="#">
 										<input type="text" name="query" id="query" placeholder="Search" />
 									</form>
 								</section>
+                             -->
 
 							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Menu</h2>
-									</header>
-									<ul>
-										<li><a href="../index.html">Homepage</a></li>
-										<li><a href="../install.html">Installation</a></li>
-										<li><a href="../quick_start.html">Quick Guide</a></li>
-										<li><a href="../tasks/init.html">PyNOT: INIT</a></li>
-										<li>
-											<span class="opener">SPEX: tasks</span>
-											<ul>
-												<li><a href="bias.html">bias</a></li>
-												<li><a href="flat.html">sflat</a></li>
-												<li><a href="corr.html">corr</a></li>
-												<li><a href="identify.html">identify</a></li>
-												<li><a href="response.html">response</a></li>
-												<li><a href="wave1d.html">wave1d</a></li>
-												<li><a href="rectify.html">wave2d</a></li>
-												<li><a href="skysub.html">skysub</a></li>
-												<li><a href="crr.html">crr</a></li>
-												<li><a href="flux.html">flux1d</a></li>
-												<li><a href="flux.html">flux2d</a></li>
-												<li><a href="extract.html">extract</a></li>
-											</ul>
-										</li>
-										<li>
-											<span class="opener">PHOT: tasks</span>
-											<ul>
-												<li><a href="bias.html">bias</a></li>
-												<li><a href="flat.html">imflat</a></li>
-												<li><a href="corr.html">corr</a></li>
-												<li><a href="imtrim.html">imtrim</a></li>
-												<li><a href="imcombine.html">imcombine</a></li>
-												<li><a href="fringe.html">fringe</a></li>
-												<li><a href="sep.html">sep</a></li>
-												<li><a href="wcs.html">wcs</a></li>
-												<li><a href="autozp.html">autozp</a></li>
-												<li><a href="findnew.html">findnew</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Example: Spectroscopy</a></li>
-										<li><a href="#">Example: Photometry</a></li>
-									</ul>
-								</nav>
+							<nav id="menu">
+								<header class="major">
+									<h2>PyNOT</h2>
+								</header>
+                                <ul>
+                                    <li><a href="../../index.html">Homepage</a></li>
+                                    <li><a href="../../install.html">Installation</a></li>
+                                    <li><a href="../../tasks/init.html">PyNOT : init</a></li>
+                                    <li>
+                                    <span class="opener">SPEX: tasks</span>
+                                    <ul>
+                                        <li><a href="../../tasks/spex/bias.html">bias</a></li>
+                                        <li><a href="../../tasks/spex/corr.html">corr</a></li>
+                                        <li><a href="../../tasks/spex/crr.html">crr</a></li>
+                                        <li><a href="../../tasks/spex/extract.html">extract</a></li>
+                                        <li><a href="../../tasks/spex/flux1.html">flux1</a></li>
+                                        <li><a href="../../tasks/spex/flux2.html">flux2</a></li>
+                                        <li><a href="../../tasks/spex/identify.html">identify</a></li>
+                                        <li><a href="../../tasks/spex/response.html">response</a></li>
+                                        <li><a href="../../tasks/spex/sflat.html">sflat</a></li>
+                                        <li><a href="../../tasks/spex/skysub.html">skysub</a></li>
+                                        <li><a href="../../tasks/spex/wave1d.html">wave1d</a></li>
+                                        <li><a href="../../tasks/spex/wave2d.html">wave2d</a></li>
+                                    </ul>
+                                    </li>
+                                    <li>
+                                    <span class="opener">PHOT: tasks</span>
+                                    <ul>
+                                        <li><a href="../../tasks/phot/autozp.html">autozp</a></li>
+                                        <li><a href="../../tasks/phot/bias.html">bias</a></li>
+                                        <li><a href="../../tasks/phot/corr.html">corr</a></li>
+                                        <li><a href="../../tasks/phot/findnew.html">findnew</a></li>
+                                        <li><a href="../../tasks/phot/fringe.html">fringe</a></li>
+                                        <li><a href="../../tasks/phot/imcombine.html">imcombine</a></li>
+                                        <li><a href="../../tasks/phot/imflat.html">imflat</a></li>
+                                        <li><a href="../../tasks/phot/imtrim.html">imtrim</a></li>
+                                        <li><a href="../../tasks/phot/sep.html">sep</a></li>
+                                        <li><a href="../../tasks/phot/wcs.html">wcs</a></li>
+                                    </ul>
+                                    </li>
+                                </ul>
+							</nav>
 
 							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<div class="mini-posts">
-										<p>If you are having issues or find bugs in the code, please contact me. You can either contact me via GitHub or send an e-mail:</p>
-										<ul class="contact">
-											<li class="icon solid fa-envelope"><a href="#">krogager.jk@gmail.com</a></li>
-										</ul>
-										<!-- <article>
-											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article> -->
-										<article>
-											<!-- <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a> -->
-											<p>For more information about me and my research, visit my homepage:</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="https://jkrogager.github.io/" class="button">jkrogager.github.io</a></li>
+							<section>
+								<header class="major">
+									<h2>Get in touch</h2>
+								</header>
+								<div class="mini-posts">
+									<p>If you are having issues or find bugs in the code, please contact me. You can either contact me via GitHub or send an e-mail:</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">krogager.jk@gmail.com</a></li>
 									</ul>
-								</section>
+									<article>
+										<p>For more information about me and my research, visit my homepage:</p>
+									</article>
+								</div>
+								<ul class="actions">
+									<li><a href="https://jkrogager.github.io/" class="button">jkrogager.github.io</a></li>
+								</ul>
+							</section>
 
 							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Jens-Kristian Krogager (2021) &mdash; MIT license<br>
-										Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
+							<footer id="footer">
+								<p class="copyright">&copy; Jens-Kristian Krogager (2021) &mdash; MIT license<br>
+									Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+							</footer>
 
 						</div>
 					</div>
@@ -137,11 +173,11 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/browser.min.js"></script>
-			<script src="../assets/js/breakpoints.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/main.js"></script>
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
 
 			<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 			<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
@@ -149,3 +185,4 @@
 
 	</body>
 </html>
+
