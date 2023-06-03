@@ -1,0 +1,203 @@
+[
+    {
+        "bibcode": "2023Msngr.190...38K",
+        "abstract": "The 4MOST\u2013Gaia Purely Astrometric Quasar Survey (4G-PAQS) will carry out the first large-scale, colour-independent quasar survey selected solely on the basis of astrometry from Gaia. Our main objective is to quantify the selection effects of current colour-selected samples. These colour-selected samples bias our view of the neutral gas and its chemical enrichment because of dust obscuration and reddening of optical colours. Moreover, the broad absorption-line outflows observed in quasars are under-represented by optical colour selection. 4G-PAQS will provide the first sample to overcome these challenges and will constrain the physical and chemical properties of gas in galaxies and quasars at cosmic noon.",
+        "author": [
+            "Krogager, J. -K.",
+            "Leighly, K. M.",
+            "Fynbo, J. P. U.",
+            "Heintz, K. E.",
+            "Balashev, S.",
+            "Bauer, F. E.",
+            "Berg, T.",
+            "Choi, H.",
+            "Christensen, L. B.",
+            "De Cia, A.",
+            "Ellison, S.",
+            "Geier, S.",
+            "Glikman, E.",
+            "Gupta, N.",
+            "Konstantopoulou, C.",
+            "Kosenko, D.",
+            "Ledoux, C.",
+            "L\u00f3pez, S.",
+            "Milvang-Jensen, B.",
+            "Morabito, L.",
+            "M\u00f8ller, P.",
+            "Noterdaeme, P.",
+            "Pettini, M.",
+            "Prochaska, J. X.",
+            "Raimundo, S.",
+            "Richard, J.",
+            "Srianand, R.",
+            "Telikova, K.",
+            "Terndrup, D.",
+            "Tripp, T. M.",
+            "Vestergaard, M.",
+            "Zafar, T."
+        ],
+        "doi": [
+            "10.18727/0722-6691/5310"
+        ],
+        "page": [
+            "38"
+        ],
+        "pub": "The Messenger",
+        "title": [
+            "The 4MOST\u2013Gaia Purely Astrometric Quasar Survey (4G-PAQS)"
+        ],
+        "volume": "190",
+        "year": "2023"
+    },
+    {
+        "bibcode": "2022ApJ...929..108G",
+        "abstract": "We present results of an optical spectroscopic survey using SALT and the Nordic Optical Telescope to build a Wide-field Infrared Survey Explorer mid-infrared color-based, dust-unbiased sample of powerful radio-bright (&gt;200 mJy at 1.4 GHz) active galactic nuclei (AGN) for the MeerKAT Absorption Line Survey (MALS). Our sample has 250 AGN (median z = 1.8) showing emission lines, 26 with no emission lines, and 27 without optical counterparts. Overall, our sample is fainter (\u0394i = 0.6 mag) and redder (\u0394(g-i) = 0.2 mag) than radio-selected quasars, and representative of fainter quasar population detected in optical surveys. About 20% of the sources are narrow-line AGN (NLAGN)-65% of these, at z &lt; 0.5 are galaxies without strong nuclear emission, and 10% at z &gt; 1.9, have emission line ratios similar to radio galaxies. The farthest NLAGN in our sample is M1513-2524 (z <SUB>em</SUB> = 3.132), and the largest radio source (size ~330 kpc) is M0909-3133 (z <SUB>em</SUB> = 0.884). We discuss in detail 110 AGN at 1.9 &lt; z &lt; 3.5. Despite representing the radio loudest quasars (median R = 3685), their Eddington ratios are similar to the Sloan Digital Sky Survey quasars having lower R. We detect four C IV broad-absorption line (BAL) QSOs, all among AGN with least R, and highest black hole masses and Eddington ratios. The BAL detection rate ( &lt;?CDATA ${4}_{-2}^{+3}$?&gt; %) is consistent with that seen in extremely powerful (L <SUB>1.4GHz</SUB> &gt; 10<SUP>25</SUP> W Hz<SUP>-1</SUP>) quasars. Using optical light curves, radio polarization, and \u03b3-ray detections, we identify seven high-probability BL Lacertae objects. We also summarize the full MALS footprint to search for H I 21 cm and OH 18 cm lines at z &lt; 2.",
+        "author": [
+            "Gupta, N.",
+            "Shukla, G.",
+            "Srianand, R.",
+            "Krogager, J. -K.",
+            "Noterdaeme, P.",
+            "Baker, A. J.",
+            "Combes, F.",
+            "Fynbo, J. P. U.",
+            "Momjian, E.",
+            "Hilton, M.",
+            "Hussain, T.",
+            "Moodley, K.",
+            "Petitjean, P.",
+            "Chen, H. -W.",
+            "Deka, P.",
+            "Dutta, R.",
+            "Jose, J.",
+            "J\u00f3zsa, G. I. G.",
+            "Kaski, C.",
+            "Kl\u00f6ckner, H. -R.",
+            "Knowles, K.",
+            "Sikhosana, S.",
+            "Wagenveld, J."
+        ],
+        "doi": [
+            "10.3847/1538-4357/ac4220",
+            "10.48550/arXiv.2107.09705"
+        ],
+        "page": [
+            "108"
+        ],
+        "pub": "The Astrophysical Journal",
+        "title": [
+            "MALS SALT-NOT Survey of MIR-selected Powerful Radio-bright AGN at 0 &lt; z &lt; 3.5"
+        ],
+        "volume": "929",
+        "year": "2022"
+    },
+    {
+        "bibcode": "2022SPIE12184E..14D",
+        "abstract": "4MOST is a new high-multiplex, wide-field spectroscopic survey facility under construction for ESO's 4m-VISTA telescope at Paranal, Chile. Its key specifications are: a large field of view of 4.4 square degrees, a high multiplex fibre positioner based on the tilting spine principle that positions 2436 science fibres in the focal surface of which 1624 fibres go to two low-resolution optical spectrographs (R = \u03bb/\u0394\u03bb ~ 6500) and 812 fibres transfer light to the high-resolution optical spectrograph (R ~ 20,000). Currently, almost all subsystems are completed and full testing in Europe will be finished in spring 2023, after which 4MOST will be shipped to Chile. An overview is given of instrument construction and capabilities, the planned science of the consortium and the recently selected community programmes, and the unique operational scheme of 4MOST.",
+        "author": [
+            "de Jong, Roelof S.",
+            "Bellido-Tirado, Olga",
+            "Brynnel, Joar G.",
+            "Ezzati Amini, Aida",
+            "Frey, Steffen",
+            "F\u00fc\u00dflein, Christine",
+            "G\u00e4bler, Miklos",
+            "Giannone, Domenico",
+            "Johl, Diana",
+            "Kuba, Silke",
+            "Lemke, Ulrike",
+            "Micheva, Genoveva",
+            "Saviauk, Allar",
+            "Steinmetz, Matthias",
+            "Walcher, Jakob C.",
+            "Winkler, Roland",
+            "Lind, Karin",
+            "Loveday, Jonathan",
+            "Feltzing, Sofia",
+            "McMahon, Richard",
+            "Mainieri, Vincenzo",
+            "Pirard, Jean-Fran\u00e7ois",
+            "Bensby, Thomas",
+            "Bergemann, Maria",
+            "Chiappini, Cristina",
+            "Christlieb, Norbert",
+            "Cioni, Maria-Rosa L.",
+            "Comparat, Johan",
+            "Driver, Simon",
+            "Hook, Isobel",
+            "Irwin, Mike",
+            "Kneib, Jean-Paul",
+            "Liske, Jochen",
+            "Merloni, Andrea",
+            "Minchev, Ivan",
+            "Richard, Johan",
+            "Starkenburg, Else",
+            "Sullivan, Mark",
+            "Worley, Clare",
+            "Gaessler, Wolfgang",
+            "Laurent, Florance",
+            "Pragt, Johan",
+            "Remillieux, Alban",
+            "Rothmaier, Florian",
+            "Smedley, Scott",
+            "Stilz, Ingo",
+            "Walton, Nicholas",
+            "Alexander, David M.",
+            "Church, Ross",
+            "Croom, Scott",
+            "Davies, Luke J.",
+            "Heneka, Caroline",
+            "Kacharov, Nikolay",
+            "Knoche, J\u00f6rg",
+            "Kordopatis, Georges",
+            "Krumpe, Mirko",
+            "Martell, Sarah",
+            "Norberg, Peder",
+            "Pelisoli, Ingrid",
+            "Sharma, Sanjib",
+            "Storm, Jesper",
+            "Tempel, Elmo"
+        ],
+        "doi": [
+            "10.1117/12.2628965"
+        ],
+        "page": [
+            "1218414"
+        ],
+        "pub": "Ground-based and Airborne Instrumentation for Astronomy IX",
+        "title": [
+            "4MOST: the 4-metre multi-object spectroscopic telescope project in the assembly, integration, and test phase"
+        ],
+        "volume": "12184",
+        "year": "2022"
+    },
+    {
+        "bibcode": "2023A&A...673A..89N",
+        "abstract": "Proximate molecular quasar absorbers (PH<SUB>2</SUB>) are an intriguing population of absorption systems that was recently uncovered through strong H<SUB>2</SUB> absorption at a small velocity separation from the background quasars. We performed a multi-wavelength spectroscopic follow-up of 13 such systems with VLT/X-shooter. Here, we present the observations and study the overall chemical enrichment measured from the H I, H<SUB>2</SUB>, and metal lines. We combined this with an investigation of the neutral gas kinematics with respect to the quasar host. We find gas-phase metallicities in the range 2% to 40% of the solar value, that is, in the upper-half range of H I-selected proximate damped Lyman-\u03b1 systems, but similar to what is seen in intervening H<SUB>2</SUB>-bearing systems. This is likely driven by similar selection effects that play against the detection of most metal- and molecule-rich systems in absorption. Differences are seen in the abundance of dust (from [Zn/Fe]) and its depletion pattern when compared to intervening systems, however, possibly indicating different dust production or destruction close to the active galactic nucleus. We also note the almost ubiquitous presence of a high-ionisation phase traced by N V in proximate systems. In spite of the hard UV field from the quasars, we found no strong overall deficit of neutral argon, at least when compared to intervening damped Lyman-\u03b1 systems. The reason likely is that argon is mostly neutral in the H<SUB>2</SUB> phase, which accounts for a large fraction of the total amount of metals. We measured the quasar systemic redshifts through emission lines from both ionised gas and CO(3-2) emission, the latter being detected in all six cases for which we obtained 3 mm data from complementary NOEMA observations. For the first time, we observe a trend between the line-of-sight velocity with respect to systemic redshift and metallicity of the absorbing gas. This suggests that high-metallicity neutral and molecular gas is more likely to be located in outflows, while low-metallicity gas could be more clustered in velocity space around the quasar host, possibly with an infalling component. <P />Based on observations collected at the European Organisation for Astronomical Research in the Southern Hemisphere under ESO programmes 103.B-0260(A) and 105.203L.001.",
+        "author": [
+            "Noterdaeme, P.",
+            "Balashev, S.",
+            "Cuellar, R.",
+            "Krogager, J. -K.",
+            "Combes, F.",
+            "De Cia, A.",
+            "Gupta, N.",
+            "Ledoux, C.",
+            "L\u00f3pez, S.",
+            "Srianand, R."
+        ],
+        "doi": [
+            "10.1051/0004-6361/202245554",
+            "10.48550/arXiv.2302.13108"
+        ],
+        "page": [
+            "A89"
+        ],
+        "pub": "Astronomy and Astrophysics",
+        "title": [
+            "Proximate molecular quasar absorbers. Chemical enrichment and kinematics of the neutral gas"
+        ],
+        "volume": "673",
+        "year": "2023"
+    }
+]
