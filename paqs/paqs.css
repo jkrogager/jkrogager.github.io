@@ -148,6 +148,10 @@ article {
 	padding-bottom: 50px;
 }
 
+article p {
+	padding-bottom: 10px;
+}
+
 header {
 	text-align: right;
 	width: 100%;
@@ -167,6 +171,11 @@ a#header:hover {
 }
 
 a:link {
+	text-decoration: none;
+	color:#4c77ee;
+}
+a:visited {
+	color:#4c77ee;
 	text-decoration: none;
 }
 a:hover {

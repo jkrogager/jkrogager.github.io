@@ -60,6 +60,7 @@ def generate_html(publications):
               <a href="dlas.html">Intervening Absorbers</a>
               <a href="bals.html">Broad Absorption Line Quasars</a>
               <a href="facility.html">4MOST on the VISTA telescope</a>
+              <a href="targets.html">Target selection</a>
             </div>
           </div> 
         <a id="header" href="publications.html">Publications</a>
