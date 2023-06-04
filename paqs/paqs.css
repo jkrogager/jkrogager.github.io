@@ -105,6 +105,19 @@ div.publications {
 	line-height: 1.5em;
 }
 
+figure {
+	padding-bottom: 40px;
+}
+
+figcaption {
+	color: #777;
+	text-align: left;
+	font-size: 11pt;
+}
+
+sup {font-size:xx-small; vertical-align:super;}
+sub {font-size:80%; vertical-align:sub;}
+
 #ref {
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -122,6 +135,17 @@ div.publications {
 	color:#aaa;
 	padding-right: 1%;
 	padding-left: 1%;
+}
+
+.articles {
+	font-weight: 100;
+	line-height: 1.5em;
+	font-size: 12pt;
+}
+
+article {
+	padding-top: 2px;
+	padding-bottom: 50px;
 }
 
 header {
