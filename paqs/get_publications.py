@@ -49,6 +49,7 @@ def generate_html(publications):
         file.write("<head>\n")
         file.write("  <title>Publications related to PAQS</title>\n")
         file.write("  <link rel=\"stylesheet\" href=\"paqs.css\" />\n")
+        file.write("  <link rel=\"icon\" href=\"images/4gpaqs.ico\">\n")
         file.write("</head>\n")
         file.write("<body>\n")
         file.write("""
