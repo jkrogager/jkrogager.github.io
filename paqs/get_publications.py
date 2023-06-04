@@ -48,10 +48,26 @@ def generate_html(publications):
         file.write("<html>\n")
         file.write("<head>\n")
         file.write("  <title>Publications related to PAQS</title>\n")
+        file.write("  <link rel=\"stylesheet\" href=\"paqs.css\" />\n")
         file.write("</head>\n")
         file.write("<body>\n")
-        file.write("  <h1>Publications related to the Purely Astrometric Quasar Survey (PAQS)</h1>\n")
-        file.write("  <div id=\"publications\">\n")
+        file.write("""
+    <header>
+        <a id="header" href="index.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Survey Details</button>
+            <div class="dropdown-content">
+              <a href="dlas.html">Intervening Absorbers</a>
+              <a href="bals.html">Broad Absorption Line Quasars</a>
+              <a href="facility.html">4MOST on the VISTA telescope</a>
+            </div>
+          </div> 
+        <a id="header" href="publications.html">Publications</a>
+        <a id="header" href="#contact">Contact</a>
+    </header>""")
+        file.write("  <h1>PAQS Publications</h1>\n")
+        file.write("  <p class=\"centered\">Publications related to the Purely Astrometric Quasar Survey (PAQS)</p>\n")
+        file.write("  <div class=\"publications\">\n")
 
         for publication in publications:
             title = publication.get("title", ["N/A"])[0]
@@ -73,6 +89,15 @@ def generate_html(publications):
             file.write("    <hr>\n")
 
         file.write("  </div>\n")
+        file.write("""
+    <div id="contact" class="centered">
+        <h2>Contact</h2>
+        <p>You can get in touch with the survey PI at the following address:<br>
+        <span class="blockspam" aria-hidden="true">PLEASE GO AWAY!</span> <span style="color:#4c77ee"><!-- 234987 < >fsdglkj -->jens-kristian.krogager<!-- lasldih -->@<!-- we8734nasælk -->univ-lyon1.<!-- toasjsdkjh -->fr</span>
+        </p>
+    </div>
+    """)
+        
         file.write("</body>\n")
         file.write("</html>\n")
 
