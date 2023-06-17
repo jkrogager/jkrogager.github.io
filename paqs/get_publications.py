@@ -103,7 +103,14 @@ def generate_html(publications):
         file.write("</body>\n")
         file.write("</html>\n")
 
-# Fetch publications and generate HTML file
-publications = fetch_publications()
-generate_html(publications)
+
+def main():
+    # Fetch publications and generate HTML file
+    publications = fetch_publications()
+    generate_html(publications)
+    print("Updated HTML page: publications.html")
+
+
+if __name__ == '__main__':
+    main()
 
