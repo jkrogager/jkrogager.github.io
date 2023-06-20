@@ -108,9 +108,9 @@ input, select, textarea {
 
 	body, input, select, textarea {
 		color: #888;
-		font-family: "Lato", sans-serif;
+		font-family: "Helvetica-Neue", sans-serif;
 		font-size: 16pt;
-		font-weight: 400;
+		font-weight: 200;
 		line-height: 1.75em;
 	}
 
