@@ -30,7 +30,8 @@
 								</header>
 
 							<!-- Content -->
-								<section>
+                                <section>
+
 									<header class="main">
 										<h1>PyNOT : init</h1>
 									</header>
@@ -65,25 +66,35 @@
 									<p class="note">
 										Note: An overview of the options for individual tasks can be shown by running the command line help function:
 										<br>
-										<code>pynot bias -h</code> will show the available parameters for the <code>bias</code> task.
+										<code>pynot init -h</code> will show the available parameters for the <code>init</code> task.
 									</p>
 
+<h2> Example </h2>
+<h2 class="code">
+pynot init {spec,spex,phot} path
+</h2>
+<br>
+Full example of command line syntax: 
+<p class="code">
+pynot init [-h] [-p PARS] [-o OUTPUT] [-s] {spec,spex,phot} path [path ...]
+</p>
+<br><br>
 
-									<h2 id="summary"> Overview of parameters</h2>
-
-									<dl>
-										<dt>mode  &nbsp;&nbsp;<span style="font-size:smaller">[mandatory]</span></dt>
-												<dd>Create parameter file for spectroscopy or imaging? {spec, spex or phot}</dd>
-									  <dt>path  &nbsp;&nbsp;<span style="font-size:smaller">[mandatory]</span></dt>
-												<dd>Path (or paths) to raw ALFOSC data to be classified</dd>
-									  <dt>pars: options.yml</dt>
-												<dd>Filename of parameter file  (default: options.yml)</dd>
-									  <dt>output: dataset.pfc</dt>
-												<dd>Filename of file classification table (*.pfc) (default: dataset.pfc)</dd>
-									  <dt>silent: True</dt>
-												<dd>Minimze the output to terminal (default: True)</dd>
-									</dl>
-
+<h2 id="summary"> Overview of parameters </h2>
+<dl>
+<dt>mode</dt>
+    <dd>Create parameter file for spectroscopy or imaging?</dd>
+<dt>path</dt>
+    <dd>Path (or paths) to raw data to be classified</dd>
+</dl><u> Optional Arguments: </u>
+<dl>
+<dt>--pars (-p):  'options.yml'</dt>
+    <dd>Filename of parameter file, default = options.yml</dd>
+<dt>--output (-o):  'dataset.pfc'</dt>
+    <dd>Filename of file classification table (*.pfc)</dd>
+<dt>--silent (-s):  True</dt>
+    <dd>Minimze the output to terminal</dd>
+</dl>
 								</section>
 
 						</div>
@@ -93,89 +104,83 @@
 					<div id="sidebar">
 						<div class="inner">
 
-							<!-- Search -->
+							<!-- Search
 								<section id="search" class="alt">
 									<form method="post" action="#">
 										<input type="text" name="query" id="query" placeholder="Search" />
 									</form>
 								</section>
+                             -->
 
 							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>PyNOT</h2>
-									</header>
-									<ul>
-										<li><a href="../index.html">Homepage</a></li>
-										<li><a href="../install.html">Installation</a></li>
-										<li><a href="../quick_start.html">Quick Guide</a></li>
-										<li><a href="../tasks/init.html">PyNOT: INIT</a></li>
-										<li>
-											<span class="opener">SPEX: tasks</span>
-											<ul>
-												<li><a href="bias.html">bias</a></li>
-												<li><a href="flat.html">sflat</a></li>
-												<li><a href="corr.html">corr</a></li>
-												<li><a href="identify.html">identify</a></li>
-												<li><a href="response.html">response</a></li>
-												<li><a href="wave1d.html">wave1d</a></li>
-												<li><a href="rectify.html">wave2d</a></li>
-												<li><a href="skysub.html">skysub</a></li>
-												<li><a href="crr.html">crr</a></li>
-												<li><a href="flux.html">flux1d</a></li>
-												<li><a href="flux.html">flux2d</a></li>
-												<li><a href="extract.html">extract</a></li>
-											</ul>
-										</li>
-										<li>
-											<span class="opener">PHOT: tasks</span>
-											<ul>
-												<li><a href="bias.html">bias</a></li>
-												<li><a href="flat.html">imflat</a></li>
-												<li><a href="corr.html">corr</a></li>
-												<li><a href="imtrim.html">imtrim</a></li>
-												<li><a href="imcombine.html">imcombine</a></li>
-												<li><a href="fringe.html">fringe</a></li>
-												<li><a href="sep.html">sep</a></li>
-												<li><a href="wcs.html">wcs</a></li>
-												<li><a href="autozp.html">autozp</a></li>
-												<li><a href="findnew.html">findnew</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Example: Spectroscopy</a></li>
-										<li><a href="#">Example: Photometry</a></li>
-									</ul>
-								</nav>
+							<nav id="menu">
+								<header class="major">
+									<h2>PyNOT</h2>
+								</header>
+                                <ul>
+                                    <li><a href="../index.html">Homepage</a></li>
+                                    <li><a href="../install.html">Installation</a></li>
+                                    <li><a href="../tasks/init.html">PyNOT : init</a></li>
+                                    <li>
+                                    <span class="opener">SPEX: tasks</span>
+                                    <ul>
+                                        <li><a href="../tasks/spex/bias.html">bias</a></li>
+                                        <li><a href="../tasks/spex/corr.html">corr</a></li>
+                                        <li><a href="../tasks/spex/crr.html">crr</a></li>
+                                        <li><a href="../tasks/spex/extract.html">extract</a></li>
+                                        <li><a href="../tasks/spex/flux1.html">flux1</a></li>
+                                        <li><a href="../tasks/spex/flux2.html">flux2</a></li>
+                                        <li><a href="../tasks/spex/identify.html">identify</a></li>
+                                        <li><a href="../tasks/spex/response.html">response</a></li>
+                                        <li><a href="../tasks/spex/scombine.html">scombine</a></li>
+                                        <li><a href="../tasks/spex/sflat.html">sflat</a></li>
+                                        <li><a href="../tasks/spex/skysub.html">skysub</a></li>
+                                        <li><a href="../tasks/spex/wave1d.html">wave1d</a></li>
+                                        <li><a href="../tasks/spex/wave2d.html">wave2d</a></li>
+                                    </ul>
+                                    </li>
+                                    <li>
+                                    <span class="opener">PHOT: tasks</span>
+                                    <ul>
+                                        <li><a href="../tasks/phot/autozp.html">autozp</a></li>
+                                        <li><a href="../tasks/phot/bias.html">bias</a></li>
+                                        <li><a href="../tasks/phot/corr.html">corr</a></li>
+                                        <li><a href="../tasks/phot/findnew.html">findnew</a></li>
+                                        <li><a href="../tasks/phot/fringe.html">fringe</a></li>
+                                        <li><a href="../tasks/phot/imcombine.html">imcombine</a></li>
+                                        <li><a href="../tasks/phot/imflat.html">imflat</a></li>
+                                        <li><a href="../tasks/phot/imtrim.html">imtrim</a></li>
+                                        <li><a href="../tasks/phot/sep.html">sep</a></li>
+                                        <li><a href="../tasks/phot/wcs.html">wcs</a></li>
+                                    </ul>
+                                    </li>
+                                </ul>
+							</nav>
 
 							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Get in touch</h2>
-									</header>
-									<div class="mini-posts">
-										<p>If you are having issues or find bugs in the code, please contact me. You can either contact me via GitHub or send an e-mail:</p>
-										<ul class="contact">
-											<li class="icon solid fa-envelope"><a href="#">krogager.jk@gmail.com</a></li>
-										</ul>
-										<!-- <article>
-											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article> -->
-										<article>
-											<!-- <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a> -->
-											<p>For more information about me and my research, visit my homepage:</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="https://jkrogager.github.io/" class="button">jkrogager.github.io</a></li>
+							<section>
+								<header class="major">
+									<h2>Get in touch</h2>
+								</header>
+								<div class="mini-posts">
+									<p>If you are having issues or find bugs in the code, please contact me. You can either contact me via GitHub or send an e-mail:</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">krogager.jk@gmail.com</a></li>
 									</ul>
-								</section>
+									<article>
+										<p>For more information about me and my research, visit my homepage:</p>
+									</article>
+								</div>
+								<ul class="actions">
+									<li><a href="https://jkrogager.github.io/" class="button">jkrogager.github.io</a></li>
+								</ul>
+							</section>
 
 							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; Jens-Kristian Krogager (2021) &mdash; MIT license<br>
-										Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
+							<footer id="footer">
+								<p class="copyright">&copy; Jens-Kristian Krogager (2021) &mdash; MIT license<br>
+									Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+							</footer>
 
 						</div>
 					</div>
@@ -195,3 +200,4 @@
 
 	</body>
 </html>
+

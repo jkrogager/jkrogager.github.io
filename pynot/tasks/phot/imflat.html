@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>PyNOT : imflat</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>PyNOT</strong> / data processing pipeline</a>
+									<ul class="icons">
+										<li><a href="https://jkrogager.github.io/"><span class="label">About Me</span></a></li>
+										<li><a href="https://github.com/jkrogager/pynot" class="icon brands fa-github"><span class="label">Github</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+                                <section>
+
+                                    <header class="main">
+                                      <h1>PyNOT : imflat</h1>
+                                    </header>
+
+									<p>
+										The <code>imflat</code> task takes a list of a flat images and combines them into a master combined flat frame.
+										The command line task accepts wildcards, an explicit list of files, or a file containing a
+										list of files. The combination is performed using a sigma-clipped mean or median.
+										The threshold of the clipping and the method can be controlled by the <code>kappa</code>
+										and <code>method</code> arguments. Each individual flat frame is normalized by its median value.
+									</p>
+
+									The easiest way to generate the input for <code>pynot imflat</code> is to source it from the file
+									classification table for each photometric filter:
+									<br><br>
+									<p class="code">
+										%] cat dataset.pfc | grep IMG_FLAT | grep SDSS_r > flat_r.list<br>
+										%] pynot imflat flat_r.list --output master_flat_r.fits --method median
+									</p>
+									<br><br>
+
+									Alternatively the input can be passed as an explicit list:
+									<br><br>
+									<p class="code">
+										%] pynot imflat data/flat1.fits data/flat2.fits data/flat3.fits --output master_flat.fits
+									</p>
+									or using wildcards:
+									<p class="code">
+										%] pynot imflat data/flat*.fits --output master_flat.fits
+									</p>
+									<br><br>
+
+									<h2 id="summary"> Overview of parameters</h2>
+
+									<dl>
+									<dt>input</dt>
+											<dd>List of flat images to combine (command line accepts a list of files and wildcards)</dd>
+									</dl>
+
+                  <u>Optional Arguments:</u>
+									<dl>
+									<dt>bias:    0</dt>
+										<dd>Filename of the combined bias frame. (If no file is given, a value of 0 is assumed)</dd>
+									<dt>method:    median</dt>
+										<dd>Method for image combination (options: median/mean)</dd>
+                                    <dt>kappa:     15</dt>
+									    <dd>Threshold for sigma clipping in bias combiniation</dd>
+									</dl>
+<h2> Example </h2>
+<h2 class="code">
+pynot imflat --bias BIAS -o OUTPUT input
+</h2>
+<br>
+Full example of command line syntax: 
+<p class="code">
+pynot imflat [-h] --bias BIAS -o OUTPUT [--kappa KAPPA] [--method {mean,median}] input
+</p>
+<br><br>
+
+<h2 id="summary"> Overview of parameters </h2>
+<dl>
+<dt>input</dt>
+    <dd>Input file containing list of image filenames to combine</dd>
+<dt>--bias</dt>
+    <dd>Filename of combined bias frame  [REQUIRED]</dd>
+<dt>--output (-o)</dt>
+    <dd>Output filename of combined bias frame  [REQUIRED]</dd>
+</dl><u> Optional Arguments: </u>
+<dl>
+<dt>--kappa:  15</dt>
+    <dd>Threshold for sigma clipping</dd>
+<dt>--method:  'mean'</dt>
+    <dd>Method for image combination</dd>
+</dl>
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+                             -->
+
+							<!-- Menu -->
+							<nav id="menu">
+								<header class="major">
+									<h2>PyNOT</h2>
+								</header>
+                                <ul>
+                                    <li><a href="../../index.html">Homepage</a></li>
+                                    <li><a href="../../install.html">Installation</a></li>
+                                    <li><a href="../../tasks/init.html">PyNOT : init</a></li>
+                                    <li>
+                                    <span class="opener">SPEX: tasks</span>
+                                    <ul>
+                                        <li><a href="../../tasks/spex/bias.html">bias</a></li>
+                                        <li><a href="../../tasks/spex/corr.html">corr</a></li>
+                                        <li><a href="../../tasks/spex/crr.html">crr</a></li>
+                                        <li><a href="../../tasks/spex/extract.html">extract</a></li>
+                                        <li><a href="../../tasks/spex/flux1.html">flux1</a></li>
+                                        <li><a href="../../tasks/spex/flux2.html">flux2</a></li>
+                                        <li><a href="../../tasks/spex/identify.html">identify</a></li>
+                                        <li><a href="../../tasks/spex/response.html">response</a></li>
+                                        <li><a href="../../tasks/spex/scombine.html">scombine</a></li>
+                                        <li><a href="../../tasks/spex/sflat.html">sflat</a></li>
+                                        <li><a href="../../tasks/spex/skysub.html">skysub</a></li>
+                                        <li><a href="../../tasks/spex/wave1d.html">wave1d</a></li>
+                                        <li><a href="../../tasks/spex/wave2d.html">wave2d</a></li>
+                                    </ul>
+                                    </li>
+                                    <li>
+                                    <span class="opener">PHOT: tasks</span>
+                                    <ul>
+                                        <li><a href="../../tasks/phot/autozp.html">autozp</a></li>
+                                        <li><a href="../../tasks/phot/bias.html">bias</a></li>
+                                        <li><a href="../../tasks/phot/corr.html">corr</a></li>
+                                        <li><a href="../../tasks/phot/findnew.html">findnew</a></li>
+                                        <li><a href="../../tasks/phot/fringe.html">fringe</a></li>
+                                        <li><a href="../../tasks/phot/imcombine.html">imcombine</a></li>
+                                        <li><a href="../../tasks/phot/imflat.html">imflat</a></li>
+                                        <li><a href="../../tasks/phot/imtrim.html">imtrim</a></li>
+                                        <li><a href="../../tasks/phot/sep.html">sep</a></li>
+                                        <li><a href="../../tasks/phot/wcs.html">wcs</a></li>
+                                    </ul>
+                                    </li>
+                                </ul>
+							</nav>
+
+							<!-- Section -->
+							<section>
+								<header class="major">
+									<h2>Get in touch</h2>
+								</header>
+								<div class="mini-posts">
+									<p>If you are having issues or find bugs in the code, please contact me. You can either contact me via GitHub or send an e-mail:</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">krogager.jk@gmail.com</a></li>
+									</ul>
+									<article>
+										<p>For more information about me and my research, visit my homepage:</p>
+									</article>
+								</div>
+								<ul class="actions">
+									<li><a href="https://jkrogager.github.io/" class="button">jkrogager.github.io</a></li>
+								</ul>
+							</section>
+
+							<!-- Footer -->
+							<footer id="footer">
+								<p class="copyright">&copy; Jens-Kristian Krogager (2021) &mdash; MIT license<br>
+									Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+							</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/browser.min.js"></script>
+			<script src="../../assets/js/breakpoints.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
+
+			<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+			<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+
+
+	</body>
+</html>
+

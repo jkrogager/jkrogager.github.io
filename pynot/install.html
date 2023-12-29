@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>PyNOT</title>
+		<title>Installation Instructions</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="./assets/css/main.css" />
@@ -31,46 +31,61 @@
 
 							<!-- Content -->
                                 <section>
-
 									<header class="main">
-										<h1>PyNOT</h1>
+										<h1>Installation Instructions</h1>
 									</header>
 
-									<p>
-									PyNOT is a data processing pipeline for the ALFOSC instrument at the Nordic Optical Telescope on La Palma, Spain. The pipeline works as a collection of individual tasks which can either be run manually, step by step, or as an automated workflow. The tasks are designed to process standard CCD imaging and long-slit spectroscopy. The pipeline has two main modules: the spectroscopic module (<i>spex</i>) and the photometric module (<i>phot</i>). These are run from the command line and controlled by a single parameter file that allows the user to change individual parameters. The spex module furthermore has a set of graphic user interfaces to make certain steps of the data processing easier and more convenient.
-									</p>
-
 									<hr class="major" />
 
-									<h2>PyNOT &ndash; spex</h2>
-
 									<p>
-									The spectroscopic data processing pipeline (spex) handles all the necessary steps needed to calibrate a raw CCD image of the spectrum. The final outputs are: a 2-dimensional wavelength- and flux-calibrated spectrum; and a 1-dimensional extraction. The pipeline can be run in a fully automated mode, requiring minimal input from the user. The pipeline performs a sequence of zero-level subtraction, flat field correction, wavelength calibration and rectification, flux calibration and extraction. For more information about the individual tasks, see the spectroscopic example page and the dedicated task overview in the menu bar on the left.
+                                    PyNOT is available via <a href="https://pypi.org/project/PyNOT-redux/">PyPI</a> under the name <span style="font-family:'courier new'">PyNOT-redux</span>. The easiest way to install PyNOT is therefore the following:
+									</p>
+                                    <pre>
+<code>python3 -m pip install PyNOT-redux
+</code>
+                                    </pre>
+
+                                    <p>
+                                    If you prefer to install it yourself from the source, you can clone the source code from GitHub and run the installation script:
+                                    </p>
+                                    <pre>
+<code>git clone https://github.com/jkrogager/pynot.git
+cd pynot
+python3 setup.py install
+</code>
+                                    </pre>
+
+																		<p class='warning'>
+																			NOTE: PyNOT has only been tested for Python 3.7 and 3.8!
+																			</p>
+
+                                    <h2>Dependencies</h2>
+									<p>
+									PyNOT was written using the following Python packages:
+									<a href="https://astroalign.readthedocs.io/en/latest/">astroalign</a>,
+									<a href="https://www.astropy.org/">astropy</a>,
+									<a href="https://astroquery.readthedocs.io/en/latest/">astroquery</a>,
+									<a href="https://pypi.org/project/astroscrappy/">astroscrappy</a>,
+									<a href="https://pypi.org/project/lmfit/">lmfit</a>,
+									<a href="https://matplotlib.org/">matplotlib</a>,
+									<a href="https://numpy.org/">numpy</a>,
+									<a href="https://pypi.org/project/PyQt5/">PyQt5</a>,
+									<a href="https://pypi.org/project/PyYAML/">PyYAML</a>,
+									<a href="https://www.scipy.org/">scipy</a>,
+									and
+									<a href="https://sep.readthedocs.io/en/v1.1.x/">SEP</a>.
+									I want to give a huge shout out to all the developers of these packages. Thanks for developing these fantastic tools and for sharing your work!
 									</p>
 
-									<span class="image main"><img src="images/spex_overview.jpeg" alt="" /></span>
-
-
-									<hr class="major" />
-
-									<h2>PyNOT &ndash; phot</h2>
-
 									<p>
-									The photometric data processing pipeline (phot) takes care of the steps needed to calibrate raw CCD images. The pipeline performs an automated sequence of zero-level subtraction, flat field correction, trimming, cosmic ray rejection, image registration, combination, source extraction and WCS calibration. For more information about the individual tasks, see the photometric example page and the dedicated task overview in the menu bar on the left.
+									As I'm not a professional software developer, and this is a project I run in my spare time, it's very hard for me to stay on top of all the updates to these dependencies. I would therefore really appreciate if you could let me know of any issues you may encounter as you upgrade any of these packages.
 									</p>
-
-									<span class="image main"><img src="images/phot_overview.jpeg" alt="" /></span>
-
-									<hr class="major" />
 
 
 									<h2>Acknowledgements</h2>
 
 									<p>
-									I want to thank my former thesis advisor, Prof. Johan Fynbo for helpful discussions and feedback, and for introducing me to the Nordic Optical Telescope in the first place (back in 2012).
-
-
-									PyNOT was written using the following Python packages: <b>astroalign</b>, <b>astropy</b>, <b>astroquery</b>, <b>astroscrappy</b>, <b>lmfit</b>, <b>matplotlib</b>, <b>numpy</b>, <b>PyQt5</b>, <b>PyYAML</b>, <b>scipy</b>, <b>sep</b>, and <b>spectres</b>. I want to give a huge shout out to all the developers of these packages. Thanks for developing these fantastic tools and for sharing your work!
+									I want to thank my former thesis advisor, Prof. Johan Fynbo for helpful discussions and feedback, and for introducing me to the Nordic Optical Telescope in the first place (back in 2012). I also want to thank Associate Prof. Lise Christensen for extensive testing of the code and for the great suggestions to the UI.
 									</p>
 
 								</section>
