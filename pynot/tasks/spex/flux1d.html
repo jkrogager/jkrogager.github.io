@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>PyNOT : imflat</title>
+		<title>PyNOT : flux1d</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../../assets/css/main.css" />
@@ -31,89 +31,65 @@
 
 							<!-- Content -->
                                 <section>
+                                
+                                <header class="main">
+                                  <h1>PyNOT : flux1d</h1>
+                                </header>
+                                
+                                <p>
+                                  <h2>Flux Calibration</h2>
+                                
+                                  Once the instrument response function has been determined for a given dispersive element using <a href="response.html">pynot response</a>,
+                                  the flux calibration can be applied to a 1-dimensional extracted spectrum by running the command <code>pynot flux1d</code>.
+                                  This command requires three arguments:
+                                  <ol>
+                                    <li>
+                                      The 1D extracted spectrum (in FITS table format, must be wavelength-calibrated!)
+                                    </li>
+                                    <li>
+                                      The response function calculated by <a href="response.html">pynot response</a>
+                                    </li>
+                                    <li>
+                                      The desired filename of the output, given by command line option <code>-o</code>
+                                    </li>
+                                  </ol>
+                                
+                                  PyNOT verifies that the science spectrum that you want to flux calibrate has been observed with the same instrumental setting.
+                                </p>
+                                
+                                <h3>Airmass and Exposure Time</h3>
+                                <p>
+                                  The code automatically tries to determine the airmass of the observation from the FITS header. If this is not possible, the command line will
+                                  prompt you for the value of the airmass. After you enter the value and press the <code>RETURN</code> key, the code will continue.
+                                  Similarly, if the code cannot read the exposure time from the FITS header, the command line will ask you for this value, which must be given in seconds.
+                                </p>
+                                                                
+                                
+                                <h2> Example Syntax</h2>
 
-                                    <header class="main">
-                                      <h1>PyNOT : imflat</h1>
-                                    </header>
-
-                  <p>
-                    The <code>imflat</code> task takes a list of a flat images and combines them into a master combined flat frame.
-                    The command line task accepts wildcards, an explicit list of files, or a file containing a
-                    list of files. The combination is performed using a sigma-clipped mean or median.
-                    The threshold of the clipping and the method can be controlled by the <code>kappa</code>
-                    and <code>method</code> arguments. Each individual flat frame is normalized by its median value.
-                  </p>
-
-                  The easiest way to generate the input for <code>pynot imflat</code> is to source it from the file
-                  classification table for each photometric filter:
-                  <br><br>
-                  <p class="code">
-                    %] cat dataset.pfc | grep IMG_FLAT | grep SDSS_r > flat_r.list<br>
-                    %] pynot imflat flat_r.list --output master_flat_r.fits --method median
-                  </p>
-                  <br><br>
-
-                  Alternatively the input can be passed as an explicit list:
-                  <br><br>
-                  <p class="code">
-                    %] pynot imflat data/flat1.fits data/flat2.fits data/flat3.fits --output master_flat.fits
-                  </p>
-                  or using wildcards:
-                  <p class="code">
-                    %] pynot imflat data/flat*.fits --output master_flat.fits
-                  </p>
-                  <br><br>
-
-                  <h2 id="summary"> Overview of parameters</h2>
-
-                  <dl>
-                  <dt>input</dt>
-                      <dd>List of flat images to combine (command line accepts a list of files and wildcards)</dd>
-                  </dl>
-
-                  <u>Optional Arguments:</u>
-                  <dl>
-                  <dt>bias:    0</dt>
-                    <dd>Filename of the combined bias frame. (If no file is given, a value of 0 is assumed)</dd>
-                  <dt>method:    median</dt>
-                    <dd>Method for image combination (options: median/mean)</dd>
-                                    <dt>kappa:     15</dt>
-                      <dd>Threshold for sigma clipping in bias combiniation</dd>
-                  </dl>
+                                <h2 class="code">
+                                pynot flux1d -o OUTPUT input response
+                                </h2>
+                                
+                                <br>
+                                
+                                Full example of command line syntax: 
+                                <p class="code">
+                                pynot flux1d [-h] -o OUTPUT input response
+                                </p>
+                                <br><br>                                
 
 
-<h2> Example Syntax</h2>
+                                <h2 id="summary"> Overview of parameters </h2>
 
-<h2 class="code">
-pynot imflat --bias BIAS -o OUTPUT input
-</h2>
-
-<br>
-
-Full example of command line syntax: 
-<p class="code">
-pynot imflat [-h] --bias BIAS -o OUTPUT [--kappa KAPPA] [--method {mean,median}] input
-</p>
-<br><br>
-
-
-<h2 id="summary"> Overview of parameters </h2>
-
-<dl>
-<dt>input</dt>
-    <dd>Input file containing list of image filenames to combine</dd>
-<dt>--bias</dt>
-    <dd>Filename of combined bias frame  [REQUIRED]</dd>
-<dt>--output (-o)</dt>
-    <dd>Output filename of combined bias frame  [REQUIRED]</dd>
-</dl>
-<u> Optional Arguments: </u>
-<dl>
-<dt>--kappa:  15</dt>
-    <dd>Threshold for sigma clipping</dd>
-<dt>--method:  'mean'</dt>
-    <dd>Method for image combination</dd>
-</dl>
+                                <dl>
+                                <dt>input</dt>
+                                    <dd>Input filename of 1D spectrum</dd>
+                                <dt>response</dt>
+                                    <dd>Reference response function from 'PyNOT-response'</dd>
+                                <dt>--output (-o)</dt>
+                                    <dd>Output filename of flux-calibrated spectrum [REQUIRED]</dd>
+                                </dl>
 								</section>
 
 						</div>
